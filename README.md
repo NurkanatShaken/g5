@@ -23,31 +23,31 @@
 ## 📁 Структура проекта
 
 g5/
-├── docker-compose.yml                 # Docker Compose для Prometheus + Grafana
+├── docker-compose.yml # Конфигурация Docker Compose для Prometheus + Grafana
 ├── grafana/
-│   ├── dashboards/                    # Дашборды Grafana
-│   │   ├── cadvisor.json              # Дашборд для cAdvisor
-│   │   ├── fluentd.json               # Дашборд для Fluentd
-│   │   └── node_exporter.json         # Дашборд для Node Exporter
-│   ├── dashboards.yml                 # Настройка автозагрузки дашбордов
-│   └── datasource.yml                 # Настройка Prometheus как datasource
-├── hosts.ini                          # Инвентарный файл Ansible
-├── playbook.yml                       # Основной Ansible playbook
+│ ├── dashboards/ # Предустановленные дашборды Grafana
+│ │ ├── cadvisor.json # Дашборд для cAdvisor
+│ │ ├── fluentd.json # Дашборд для Fluentd
+│ │ └── node_exporter.json # Дашборд для Node Exporter
+│ ├── dashboards.yml # Настройка автозагрузки дашбордов
+│ └── datasource.yml # Настройка Prometheus как источника данных
+├── hosts.ini # Инвентарный файл Ansible
+├── playbook.yml # Основной Ansible playbook
 ├── prometheus/
-│   └── prometheus.yml                 # Конфигурация Prometheus (job’ы, targets)
-├── README.md                          # Документация по проекту
+│ └── prometheus.yml # Конфигурация Prometheus (job'ы, targets)
+├── README.md # Документация
 └── roles/
-    ├── docker/                        # Роль Ansible для настройки Docker
-    │   ├── files/
-    │   │   ├── daemon.json            # Конфигурация Docker daemon
-    │   │   └── docker.list            # Источник репозитория Docker
-    │   └── tasks/
-    │       └── main.yml               # Основные задачи по установке Docker
-    └── fluentd/                       # Роль Ansible для установки Fluentd
-        ├── files/
-        │   └── fluentd.conf           # Конфигурация Fluentd
-        └── tasks/
-            └── main.yml              # Основные задачи по установке Fluentd
+├── docker/ # Роль для настройки Docker
+│ ├── files/
+│ │ ├── daemon.json # Конфигурация Docker daemon
+│ │ └── docker.list # Источник репозитория Docker
+│ └── tasks/
+│ └── main.yml # Задачи установки Docker
+└── fluentd/ # Роль для установки Fluentd
+├── files/
+│ └── fluentd.conf # Конфигурационный файл Fluentd
+└── tasks/
+└── main.yml # Задачи установки Fluentd
 
 ---
 
