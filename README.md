@@ -22,10 +22,11 @@
 
 ## 📁 Структура проекта
 
-g5
+```
+g5/
 ├── docker-compose.yml
-├── grafana
-│   ├── dashboards
+├── grafana/
+│   ├── dashboards/
 │   │   ├── cadvisor.json
 │   │   ├── fluentd.json
 │   │   └── node_exporter.json
@@ -33,23 +34,21 @@ g5
 │   └── datasource.yml
 ├── hosts.ini
 ├── playbook.yml
-├── prometheus
+├── prometheus/
 │   └── prometheus.yml
 ├── README.md
-└── roles
-    ├── docker
-    │   ├── files
+└── roles/
+    ├── docker/
+    │   ├── files/
     │   │   ├── daemon.json
     │   │   └── docker.list
-    │   └── tasks
+    │   └── tasks/
     │       └── main.yml
-    └── fluentd
-        ├── files
+    └── fluentd/
+        ├── files/
         │   └── fluentd.conf
-        └── tasks
+        └── tasks/
             └── main.yml
-
-
 ---
 
 ## 🚀 Развёртывание
