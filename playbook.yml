@@ -1,0 +1,40 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Copy prometheus directory
+      copy:
+        src: prometheus/
+        dest: "/tmp/prometheus/"
+        owner: root
+        group: root
+        mode: '0644'
+        directory_mode: '0755'
+
+    - name: Copy grafana directory
+      copy:
+        src: grafana/
+        dest: "/tmp/grafana/"
+        owner: root
+        group: root
+        mode: '0644'
+        directory_mode: '0755'
+
+    - name: Copy docker compose file
+      copy:
+        src: docker-compose.yml
+        dest: "/tmp/"
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Run docker compose up -d manually
+      command: docker compose up -d
+      args:
+        chdir: /tmp
+                
+  roles:
+    - fluentd
+    - docker
+      
+

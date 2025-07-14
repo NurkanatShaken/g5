@@ -1,0 +1,39 @@
+---
+- name: Ensure curl is installed
+  apt:
+    name: curl
+    state: present
+    update_cache: yes
+
+- name: Download fluent-apt-source.deb
+  get_url:
+    url: https://packages.treasuredata.com/lts/5/ubuntu/noble/pool/contrib/f/fluent-lts-apt-source/fluent-lts-apt-source_2025.1.8-1_all.deb
+    dest: /tmp/fluent-apt-source.deb
+
+- name: Install fluent-apt-source.deb
+  apt:
+    deb: /tmp/fluent-apt-source.deb
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install fluent-package
+  apt:
+    name: fluent-package
+    state: present
+
+- name: Copy config file
+  copy:
+    src: fluentd.conf
+    dest: /etc/fluent/fluentd.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Starting and enabled fluentd
+  service:
+    name: fluentd
+    state: restarted
+    enabled: yes
+      
