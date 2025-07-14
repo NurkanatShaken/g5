@@ -22,32 +22,33 @@
 
 ## 📁 Структура проекта
 
-g5
-├── docker-compose.yml
-├── grafana
-│   ├── dashboards
-│   │   ├── cadvisor.json
-│   │   ├── fluentd.json
-│   │   └── node_exporter.json
-│   ├── dashboards.yml
-│   └── datasource.yml
-├── hosts.ini
-├── playbook.yml
-├── prometheus
-│   └── prometheus.yml
-├── README.md
-└── roles
-    ├── docker
-    │   ├── files
-    │   │   ├── daemon.json
-    │   │   └── docker.list
-    │   └── tasks
-    │       └── main.yml
-    └── fluentd
-        ├── files
-        │   └── fluentd.conf
-        └── tasks
-            └── main.yml
+g5/
+├── docker-compose.yml                 # Docker Compose для Prometheus + Grafana
+├── grafana/
+│   ├── dashboards/                    # Дашборды Grafana
+│   │   ├── cadvisor.json              # Дашборд для cAdvisor
+│   │   ├── fluentd.json               # Дашборд для Fluentd
+│   │   └── node_exporter.json         # Дашборд для Node Exporter
+│   ├── dashboards.yml                 # Настройка автозагрузки дашбордов
+│   └── datasource.yml                 # Настройка Prometheus как datasource
+├── hosts.ini                          # Инвентарный файл Ansible
+├── playbook.yml                       # Основной Ansible playbook
+├── prometheus/
+│   └── prometheus.yml                 # Конфигурация Prometheus (job’ы, targets)
+├── README.md                          # Документация по проекту
+└── roles/
+    ├── docker/                        # Роль Ansible для настройки Docker
+    │   ├── files/
+    │   │   ├── daemon.json            # Конфигурация Docker daemon
+    │   │   └── docker.list            # Источник репозитория Docker
+    │   └── tasks/
+    │       └── main.yml               # Основные задачи по установке Docker
+    └── fluentd/                       # Роль Ansible для установки Fluentd
+        ├── files/
+        │   └── fluentd.conf           # Конфигурация Fluentd
+        └── tasks/
+            └── main.yml              # Основные задачи по установке Fluentd
+
 ---
 
 ## 🚀 Развёртывание
